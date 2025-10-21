@@ -1,40 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atul Gupta | Full Stack Developer</title>
+    <title>Atul Gupta - Django Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <meta name="theme-color" content="#000000">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#00f0ff',
-                        secondary: '#ff00f0',
-                        dark: '#0a0a1a',
-                        darker: '#050510',
-                    },
                     fontFamily: {
-                        sans: ['"Exo 2"', 'sans-serif'],
-                        mono: ['"Space Mono"', 'monospace'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     },
-                    animation: {
-                        'pulse-slow': 'pulse 6s infinite cubic-bezier(0.4, 0, 0.6, 1)',
-                        'float': 'float 6s ease-in-out infinite',
-                        'text-gradient': 'text-gradient 8s ease infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
                         },
-                        'text-gradient': {
-                            '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' },
+                        slate: {
+                            800: '#1e293b',
+                            900: '#0f172a',
                         }
                     }
                 }
@@ -42,596 +33,415 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-
-        body {
-            background-color: #0a0a1a;
-            color: #ffffff;
-            overflow-x: hidden;
+        .project-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
         }
-
-        .cyber-border {
-            position: relative;
-        }
-
-        .cyber-border::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid transparent;
-            background: linear-gradient(135deg, #00f0ff, #ff00f0) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            border-radius: 0.5rem;
-            pointer-events: none;
-        }
-
-        .glow-text {
-            text-shadow: 0 0 8px rgba(0, 240, 255, 0.7);
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #00f0ff, #ff00f0, #00f0ff);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        .tech-card:hover {
+        .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-left-color: #0ea5e9;
         }
-
-        .terminal::before {
-            content: '>';
-            position: absolute;
-            left: 1rem;
-            color: #00f0ff;
+        .skill-tag {
+            transition: all 0.2s ease;
         }
-
-        .grid-pattern {
-            background-image:
-                linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
+        .skill-tag:hover {
+            transform: scale(1.05);
+            background-color: #e0f2fe;
+        }
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, rgba(14,165,233,0.2) 0%, rgba(2,132,199,0.5) 50%, rgba(14,165,233,0.2) 100%);
         }
     </style>
 </head>
-
-<body class="font-sans grid-pattern">
-    <!-- Animated Background Elements -->
-    <div class="fixed -z-10 w-full h-full overflow-hidden">
-        <div class="absolute top-20 left-10 w-4 h-4 rounded-full bg-primary animate-pulse-slow"></div>
-        <div class="absolute top-1/3 right-1/4 w-6 h-6 rounded-full bg-secondary animate-pulse-slow delay-1000"></div>
-        <div class="absolute bottom-1/4 left-1/3 w-3 h-3 rounded-full bg-primary animate-pulse-slow delay-2000"></div>
-        <div class="absolute bottom-20 right-20 w-5 h-5 rounded-full bg-secondary animate-pulse-slow delay-3000"></div>
-    </div>
-
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- Header -->
-        <header class="flex flex-col md:flex-row justify-between items-center mb-16">
-            <div class="mb-8 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-bold mb-2 gradient-text animate-text-gradient">ATUL GUPTA</h1>
-                <p class="text-xl text-primary font-mono">// Full Stack Developer</p>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 font-sans text-slate-800">
+    <div class="max-w-4xl mx-auto px-6 py-10 sm:px-10 bg-white shadow-xl rounded-lg my-8 border border-slate-100">
+        <!-- Header Section -->
+        <header class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-8 border-b border-slate-200">
+            <div class="md:col-span-2">
+                <h1 class="text-4xl font-bold text-slate-900 bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">Atul Gupta</h1>
+                <p class="text-xl text-slate-600 mt-2 font-medium">Django Developer | Automation Enthusiast</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">Python</span>
+                    <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">Django</span>
+                    <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">Automation</span>
+                    <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-medium">Full-Stack</span>
+                </div>
             </div>
-
-            <nav class="flex space-x-6">
-                <a href="#about" class="text-white hover:text-primary transition-colors">About</a>
-                <a href="#skills" class="text-white hover:text-primary transition-colors">Skills</a>
-                <a href="#projects" class="text-white hover:text-primary transition-colors">Projects</a>
-                <a href="#contact" class="text-white hover:text-primary transition-colors">Contact</a>
-            </nav>
+            <div class="space-y-3 text-slate-700">
+                <p class="flex items-start">
+                    <span class="w-5 mr-2 text-primary-600">📧</span>
+                    <a href="mailto:atulyag67@gmail.com" class="hover:text-primary-600 transition-colors font-medium">atulyag67@gmail.com</a>
+                </p>
+                <p class="flex items-start">
+                    <span class="w-5 mr-2 text-primary-600">📱</span>
+                    <a href="tel:+918423990159" class="hover:text-primary-600 transition-colors font-medium">+91 8423990159</a>
+                </p>
+                <p class="flex items-start">
+                    <span class="w-5 mr-2 text-primary-600">📍</span>
+                    <span class="font-medium">Kanpur, India</span>
+                </p>
+                <p class="flex items-start">
+                    <span class="w-5 mr-2 text-primary-600">💻</span>
+                    <a href="https://github.com/atulg-spec" target="_blank" class="hover:text-primary-600 hover:underline transition-colors font-medium">github.com/atulg-spec</a>
+                </p>
+            </div>
         </header>
 
-        <!-- Hero Section -->
-        <section class="mb-24">
-            <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-8 rounded-lg">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Building Digital <span
-                                class="gradient-text">Futures</span></h2>
-                        <p class="text-lg mb-6 text-gray-300">
-                            I craft high-performance web applications with cutting-edge technologies,
-                            blending innovative design with robust functionality.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#contact"
-                                class="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-dark font-bold rounded hover:opacity-90 transition-opacity">
-                                Get In Touch
-                            </a>
-                            <a href="#projects"
-                                class="px-6 py-3 border border-primary text-primary font-bold rounded hover:bg-primary hover:bg-opacity-10 transition-colors">
-                                View Work
-                            </a>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 flex justify-center">
-                        <div class="relative w-64 h-64 animate-float">
-                            <div
-                                class="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-secondary opacity-20 blur-xl">
-                            </div>
-                            <div class="absolute inset-4 rounded-full border-2 border-primary border-opacity-50"></div>
-                            <div class="absolute inset-8 rounded-full border-2 border-secondary border-opacity-50">
-                            </div>
-                            <div class="relative w-full h-full flex items-center justify-center">
-                                <div class="text-6xl">👨‍💻</div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Career Objective -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">🎯</span> Career Objective
+            </h2>
+            <div class="section-divider my-4"></div>
+            <p class="text-base leading-relaxed text-slate-700 bg-slate-50 p-4 rounded-lg border-l-4 border-primary-500">
+                A self-motivated Django developer with a proven ability to transform technical documentation into functional applications and leverage community resources like Stack Overflow to implement effective solutions. Eager to apply a build-to-learn methodology to new challenges and contribute to a professional development team.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">🎓</span> Education
+            </h2>
+            <div class="section-divider my-4"></div>
+            <div class="space-y-4">
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="font-medium text-slate-900 text-lg">Bachelor of Business Administration (B.B.A.) — Commerce, Computer</h3>
+                    <p class="text-slate-600 mt-1">Psit College Of Higher Education (2025 - 2027)</p>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="mb-24">
-            <h2 class="text-3xl font-bold mb-8 glow-text flex items-center">
-                <span class="gradient-text mr-4">01.</span> About Me
-                <span class="ml-4 h-px bg-gradient-to-r from-primary to-secondary flex-1"></span>
+        <!-- Trainings / Certifications -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">🧠</span> Trainings / Certifications
             </h2>
+            <div class="section-divider my-4"></div>
+            <div class="space-y-4">
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-medium text-slate-900">Django — CodeWithHarry</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-2 py-1 rounded">Oct 2023</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mt-1">YouTube, Virtual</p>
+                </div>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-medium text-slate-900">Python — CodeWithHarry</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-2 py-1 rounded">Aug 2023</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mt-1">YouTube, Virtual</p>
+                </div>
+            </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg md:col-span-2">
-                    <p class="mb-4 text-gray-300">
-                        I'm Atul Gupta, a passionate Full Stack Developer with expertise in Django, React, and modern
-                        web technologies.
-                        I specialize in creating scalable, high-performance applications that solve real-world problems.
+        <!-- Projects -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">💼</span> Projects
+            </h2>
+            <div class="section-divider my-4"></div>
+            <div class="space-y-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">MRT — Mission for Re-greening Tomorrow</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">Jul 2025 – Present</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        A Django-based web application for the MRT Tree Plantation Campaign, facilitating tree donations, tracking, and environmental conservation efforts, with referral and affiliate system with earning dashboard.
                     </p>
-                    <p class="mb-4 text-gray-300">
-                        With experience in both frontend and backend development, I bridge the gap between design and
-                        technical implementation,
-                        delivering seamless user experiences powered by robust architectures.
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Django</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Python</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">PostgreSQL</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Tailwind CSS</span>
+                    </div>
+                    <a href="https://github.com/atulg-spec/mrtt" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline mt-4 font-medium transition-colors">
+                        🔗 github.com/atulg-spec/mrtt
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">GreatKart - E-commerce Platform</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">Feb 2025 – May 2025</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        GreatKart is a full-featured, scalable e-commerce platform built with Django. This full-stack web application provides a complete online shopping experience with modern web technologies. The platform supports user accounts, shopping carts, product categories, promotional coupons, wishlists, blog functionality, and real-time notifications.
                     </p>
-                    <p class="text-gray-300">
-                        When I'm not coding, you can find me exploring new technologies, contributing to open-source
-                        projects,
-                        or sharing knowledge with the developer community.
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Django</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">PostgreSQL</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">JavaScript</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">REST API</span>
+                    </div>
+                    <a href="https://github.com/atulg-spec/greatcart" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline mt-4 font-medium transition-colors">
+                        🔗 github.com/atulg-spec/greatcart
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">WONONE - Time Monitoring Software</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        A software built in electron.js to track how much time I have been working on my desktop device.
                     </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Electron.js</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">JavaScript</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Node.js</span>
+                    </div>
                 </div>
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-4 text-primary">Technical DNA</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>2+ Years Experience</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>20+ Projects Completed</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>Full Stack Proficiency</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>DevOps Expertise</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>API & Microservices</span>
-                        </li>
-                    </ul>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">TradingView PineScript Indicator</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        A dynamic and data-driven tool built to help traders identify market trends, reversals, and smarter entries and exits. Designed using advanced logic like Weighted Moving Averages (WMA) and standard deviation-based dynamic channels, this indicator offers color-coded buy and sell signals directly on your TradingView chart.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">PineScript</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Technical Analysis</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Algorithmic Trading</span>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">Online HTML Games Site</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">Dec 2024 – Feb 2025</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        An online gaming site for HTML5 games embedded as iframes in a django + tailwind website.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Django</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Tailwind CSS</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">HTML5</span>
+                    </div>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://github.com/atulg-spec/sports" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline font-medium transition-colors">
+                            🔗 GitHub Repository
+                        </a>
+                        <a href="https://playesports.in/" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline font-medium transition-colors">
+                            🌐 Live Website
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">Automated News Website</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        A responsive web application that fetches and displays the latest BBC News headlines using the NewsAPI. Built with HTML, CSS, JavaScript, and Bootstrap, it offers a modern, card-based interface and a loading spinner for a smooth user experience.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">JavaScript</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Bootstrap</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">API Integration</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">NewsAPI</span>
+                    </div>
+                    <a href="https://github.com/atulg-spec/NewsExpress" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline mt-4 font-medium transition-colors">
+                        🔗 github.com/atulg-spec/NewsExpress
+                    </a>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">Instagram Video Downloader</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        An instagram reels, posts and stories downloader built in django with authentication using API.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Django</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Python</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">API Integration</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Authentication</span>
+                    </div>
+                    <a href="https://github.com/atulg-spec/instadownloader" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline mt-4 font-medium transition-colors">
+                        🔗 github.com/atulg-spec/instadownloader
+                    </a>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">NSE Web Scraper (Puppeteer)</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        An automated bot built using python and node js puppeteer to scrape all the files available in NSE India Website for analysis purposes.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Puppeteer</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Web Scraping</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Node.js</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Python</span>
+                    </div>
+                    <a href="https://github.com/atulg-spec/nseScrapper" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline mt-4 font-medium transition-colors">
+                        🔗 github.com/atulg-spec/nseScrapper
+                    </a>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">Puppeteer Stealth Traffic Bot</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        This Node.js automation script uses Puppeteer Extra with the Stealth Plugin to simulate human-like browsing behavior across multiple proxies and devices. It is primarily designed for testing how web pages behave under different IPs and user agents (such as mobile and desktop views).
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Puppeteer</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Node.js</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Automation</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Stealth Browsing</span>
+                    </div>
+                    <a href="https://github.com/atulg-spec/exobuddy" target="_blank" class="inline-flex items-center text-primary-600 hover:text-primary-700 hover:underline mt-4 font-medium transition-colors">
+                        🔗 github.com/atulg-spec/exobuddy
+                    </a>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="project-card bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between">
+                        <h3 class="font-bold text-xl text-slate-900">Bulk Email Sending Softwares</h3>
+                        <span class="text-slate-600 text-sm sm:text-base font-medium bg-primary-50 text-primary-700 px-3 py-1 rounded-full mt-2 sm:mt-0">2024</span>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed mt-3">
+                        Developed multiple advanced bulk-mailing systems using SMTP, Google API, and Puppeteer automation — supporting multi-user logins, role-based permissions, analytics, and queue management — all powered by Django, Electron JS and Puppeteer.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Django</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Electron.js</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Puppeteer</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">SMTP</span>
+                        <span class="skill-tag px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium">Google API</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="mb-24">
-            <h2 class="text-3xl font-bold mb-8 glow-text flex items-center">
-                <span class="gradient-text mr-4">02.</span> Technical Arsenal
-                <span class="ml-4 h-px bg-gradient-to-r from-primary to-secondary flex-1"></span>
+        <!-- Skills -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">⚙️</span> Skills
             </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Frontend Card -->
-                <div
-                    class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg tech-card transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-laptop-code text-primary"></i>
+            <div class="section-divider my-4"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="font-medium text-slate-900 text-lg mb-2">Frontend</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">HTML5</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">CSS3</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Tailwind CSS</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">JavaScript</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Bootstrap</span>
                         </div>
-                        <h3 class="text-xl font-bold">Frontend</h3>
                     </div>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>HTML/CSS/JavaScript</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>Tailwind CSS</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>React & React Native</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Backend Card -->
-                <div
-                    class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg tech-card transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-server text-secondary"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Backend</h3>
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-secondary mr-3"></span>
-                            <span>Python & Django</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-secondary mr-3"></span>
-                            <span>Django REST Framework</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-secondary mr-3"></span>
-                            <span>API Development</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Database Card -->
-                <div
-                    class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg tech-card transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-database text-primary"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Database</h3>
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>PostgreSQL</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>MySQL</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>SQLite</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- DevOps Card -->
-                <div
-                    class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg tech-card transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-secondary bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-cloud text-secondary"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">DevOps & Tools</h3>
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-secondary mr-3"></span>
-                            <span>Docker</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-secondary mr-3"></span>
-                            <span>Git</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-secondary mr-3"></span>
-                            <span>Nginx, AWS, VPS</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Other Expertise Card -->
-                <div
-                    class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-6 rounded-lg tech-card transition-all duration-300">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-cogs text-primary"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Other Expertise</h3>
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>Browser Automation</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>Web Scraping</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-primary mr-3"></span>
-                            <span>SEO Optimization</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="mb-24">
-            <h2 class="text-3xl font-bold mb-8 glow-text flex items-center">
-                <span class="gradient-text mr-4">03.</span> Project Showcase
-                <span class="ml-4 h-px bg-gradient-to-r from-primary to-secondary flex-1"></span>
-            </h2>
-
-            <div class="space-y-12">
-                <!-- Smart ALGO -->
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm rounded-lg overflow-hidden">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/2 p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-primary">Smart-ALGO.in</h3>
-                            <p class="text-gray-300 mb-4">Algorithmic Trading & Demat Management Platform</p>
-                            <p class="mb-4">
-                                An advanced platform integrating algorithmic trading with secure Demat account
-                                management,
-                                providing users with precision tools for stock market activities.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Django</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">React</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Algorithmic Trading</span>
-                            </div>
-                            <a href="https://smart-algo.in" target="_blank"
-                                class="inline-flex items-center text-primary hover:underline">
-                                Visit Project <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
-                        <div class="md:w-1/2 bg-gradient-to-br from-primary to-secondary p-1">
-                            <div class="w-full h-full bg-dark p-4 flex items-center justify-center">
-                                <div class="terminal relative pl-8 font-mono text-gray-300">
-                                    <span class="text-primary">$</span> python manage.py run_algo
-                                    --strategy=smart_trading<br>
-                                    <span class="text-green-400">>></span> Algorithm initialized with accuracy<br>
-                                    <span class="text-primary">$</span> python manage.py process_trades --real-time<br>
-                                    <span class="text-green-400">>></span> Executed trades with average profit
-                                </div>
-                            </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="font-medium text-slate-900 text-lg mb-2">Backend</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Python</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Django</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">REST API</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Node.js</span>
                         </div>
                     </div>
                 </div>
-
-                <!-- OnStock -->
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm rounded-lg overflow-hidden">
-                    <div class="flex flex-col md:flex-row-reverse">
-                        <div class="md:w-1/2 p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-secondary">OnStock</h3>
-                            <p class="text-gray-300 mb-4">Comprehensive Stock Trading Platform</p>
-                            <p class="mb-4">
-                                A reliable trading platform offering real-time market data, portfolio management,
-                                and secure payment processing for seamless trading experiences.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Django REST</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">React Native</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">MySQL</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Payment Gateway</span>
-                            </div>
-                            <a href="#" target="_blank" class="inline-flex items-center text-secondary hover:underline">
-                                Visit Project <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
-                        <div class="md:w-1/2 bg-gradient-to-br from-secondary to-primary p-1">
-                            <div class="w-full h-full bg-dark p-4 flex items-center justify-center">
-                                <div class="terminal relative pl-8 font-mono text-gray-300">
-                                    <span class="text-secondary">$</span> python manage.py update_market_data<br>
-                                    <span class="text-green-400">>></span> Fetched stock prices<br>
-                                    <span class="text-secondary">$</span> python manage.py process_orders<br>
-                                    <span class="text-green-400">>></span> Completed trades without discrepancies
-                                </div>
-                            </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="font-medium text-slate-900 text-lg mb-2">Automation & Tools</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Puppeteer</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Electron.js</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Web Scraping</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">PineScript</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- StartMarket -->
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm rounded-lg overflow-hidden">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/2 p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-primary">StartMarket.in</h3>
-                            <p class="text-gray-300 mb-4">Digital Marketing & Social Media Platform</p>
-                            <p class="mb-4">
-                                A complete solution for businesses to enhance online presence, offering SEO
-                                optimization,
-                                content creation, and social media management tools.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Django</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Tailwind CSS</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">SEO Tools</span>
-                            </div>
-                            <div class="space-x-4">
-                                <a href="https://startmarket.in" target="_blank"
-                                    class="inline-flex items-center text-primary hover:underline">
-                                    Main Site <i class="fas fa-external-link-alt ml-2"></i>
-                                </a>
-                                <a href="https://shop.startmarket.in" target="_blank"
-                                    class="inline-flex items-center text-primary hover:underline">
-                                    E-commerce <i class="fas fa-external-link-alt ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 bg-gradient-to-br from-primary to-secondary p-1">
-                            <div class="w-full h-full bg-dark p-4 flex items-center justify-center">
-                                <div class="terminal relative pl-8 font-mono text-gray-300">
-                                    <span class="text-primary">$</span> python manage.py analyze_seo
-                                    --url=example.com<br>
-                                    <span class="text-green-400">>></span> SEO score: 84/100 (23 improvements found)<br>
-                                    <span class="text-primary">$</span> python manage.py schedule_posts
-                                    --platform=all<br>
-                                    <span class="text-green-400">>></span> 15 posts scheduled across 3 platforms
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5nine8nine -->
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm rounded-lg overflow-hidden">
-                    <div class="flex flex-col md:flex-row-reverse">
-                        <div class="md:w-1/2 p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-secondary">5nine8nine</h3>
-                            <p class="text-gray-300 mb-4">AdSense-Safe Traffic Generation Software</p>
-                            <p class="mb-4">
-                                Specialized software employing advanced anti-detection techniques to increase website
-                                visibility while keeping AdSense accounts secure from violations.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Electron JS</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Browser Automation</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Anti-Detection</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Traffic Analysis</span>
-                            </div>
-                            <a href="#" target="_blank" class="inline-flex items-center text-secondary hover:underline">
-                                Learn More <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                        </div>
-                        <div class="md:w-1/2 bg-gradient-to-br from-secondary to-primary p-1">
-                            <div class="w-full h-full bg-dark p-4 flex items-center justify-center">
-                                <div class="terminal relative pl-8 font-mono text-gray-300">
-                                    <span class="text-secondary">$</span> python traffic_generator.py
-                                    --url=example.com<br>
-                                    <span class="text-green-400">>></span> Generating 1,024 visits with 87%
-                                    retention<br>
-                                    <span class="text-secondary">$</span> python monitor_adsense.py<br>
-                                    <span class="text-green-400">>></span> AdSense status: Green (0 violations detected)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- E-commerce Projects -->
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm rounded-lg overflow-hidden">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/2 p-6">
-                            <h3 class="text-2xl font-bold mb-2 text-primary">E-commerce Platforms</h3>
-                            <p class="text-gray-300 mb-4">High-Performance Online Stores</p>
-                            <p class="mb-4">
-                                Developed multiple e-commerce solutions with secure payment processing,
-                                inventory management, and responsive designs for optimal user experience.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Django</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">React</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Payment Gateways</span>
-                                <span class="px-3 py-1 bg-dark rounded-full text-xs">Inventory System</span>
-                            </div>
-                            <div class="space-x-4">
-                                <a href="https://thezainly.com" target="_blank"
-                                    class="inline-flex items-center text-primary hover:underline">
-                                    TheZainly.com <i class="fas fa-external-link-alt ml-2"></i>
-                                </a>
-                                <a href="https://thegangster.in" target="_blank"
-                                    class="inline-flex items-center text-primary hover:underline">
-                                    TheGangster.in <i class="fas fa-external-link-alt ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 bg-gradient-to-br from-primary to-secondary p-1">
-                            <div class="w-full h-full bg-dark p-4 flex items-center justify-center">
-                                <div class="terminal relative pl-8 font-mono text-gray-300">
-                                    <span class="text-primary">$</span> python manage.py process_orders<br>
-                                    <span class="text-green-400">>></span> 42 new orders processed ($3,842 revenue)<br>
-                                    <span class="text-primary">$</span> python manage.py update_inventory<br>
-                                    <span class="text-green-400">>></span> Inventory synced across 3 warehouses
-                                </div>
-                            </div>
+                    
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="font-medium text-slate-900 text-lg mb-2">Database & Others</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">SQLite</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">PostgreSQL</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">Git</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">VPS Deployment</span>
+                            <span class="skill-tag px-3 py-1 bg-white text-slate-700 rounded-full text-sm border border-slate-200">SMTP</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="mb-16">
-            <h2 class="text-3xl font-bold mb-8 glow-text flex items-center">
-                <span class="gradient-text mr-4">04.</span> Connect With Me
-                <span class="ml-4 h-px bg-gradient-to-r from-primary to-secondary flex-1"></span>
+        <!-- About Me -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">🚀</span> About Me
             </h2>
+            <div class="section-divider my-4"></div>
+            <p class="text-base leading-relaxed text-slate-700 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                Self-taught full-stack developer passionate about Django, Python, and automation tools. 
+                I love exploring APIs, web scraping, and backend architectures. 
+                In my free time, I read documentation, write clean code, and often break my own projects just to rebuild them better.
+            </p>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-                <div class="cyber-border bg-dark bg-opacity-80 backdrop-blur-sm p-8 rounded-lg">
-                    <h3 class="text-2xl font-bold mb-6 text-secondary">Contact Info</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div
-                                class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-envelope text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">Email</h4>
-                                <a href="mailto:atulg0736@gmail.com"
-                                    class="text-gray-300 hover:text-primary transition-colors">atulg0736@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div
-                                class="w-10 h-10 rounded-full bg-primary bg-opacity-20 flex items-center justify-center mr-4 mt-1">
-                                <i class="fab fa-github text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">GitHub</h4>
-                                <a href="https://github.com/atulg-spec"
-                                    class="text-gray-300 hover:text-primary transition-colors">github.com/atulg-spec</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Additional Highlights -->
+        <section class="mt-10">
+            <h2 class="text-xl font-semibold text-slate-900 uppercase tracking-wide mt-10 mb-3 flex items-center gap-2">
+                <span class="bg-primary-100 p-2 rounded-full">💡</span> Additional Highlights
+            </h2>
+            <div class="section-divider my-4"></div>
+            <ul class="list-none space-y-3 text-slate-700">
+                <li class="flex items-start">
+                    <span class="text-primary-600 mr-2 mt-1">•</span>
+                    <span>Passionate about open-source contributions and experimenting with new tech</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-600 mr-2 mt-1">•</span>
+                    <span>Enjoy blending business logic with coding creativity</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-600 mr-2 mt-1">•</span>
+                    <span>Constantly learning through projects and real-world problem solving</span>
+                </li>
+            </ul>
         </section>
 
         <!-- Footer -->
-        <footer class="py-8 border-t border-gray-800">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-gray-400">© 2025 Atul Gupta. All systems operational.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                </div>
-            </div>
+        <footer class="mt-16 pt-8 border-t border-slate-300">
+            <p class="text-sm text-slate-500 text-center">
+                Atul Gupta · Django Developer · 
+                <a href="https://github.com/atulg-spec" target="_blank" class="hover:text-primary-600 hover:underline transition-colors font-medium">
+                    github.com/atulg-spec
+                </a>
+                · Kanpur, India
+            </p>
         </footer>
     </div>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
-
 </html>
